@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIアートコンペ - 水のテーマ</title>
+    <!-- OGP Settings -->
+    <meta property="og:title" content="AIアートコンペ - 水のテーマ">
+    <meta property="og:description" content="AIアートコンペ「水」の全作品を一覧でご覧いただけます。">
+    <meta property="og:image" content="image01/topogp01.jpg">
+    <meta property="og:url" content="https://neo-pixelator.github.io/ai-art-competition/">
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <!-- Twitter Card Settings (Optional but recommended for Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AIアートコンペ - 水のテーマ">
+    <meta name="twitter:description" content="AIアートコンペ「水」の全作品を一覧でご覧いただけます。">
+    <meta name="twitter:image" content="image01/topogp01.jpg">
+    <meta name="twitter:url" content="https://neo-pixelator.github.io/ai-art-competition/">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            /* 背景色を淡い水色に */
+            background-color: #e6f7ff;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* ヘッダーのグラデーション背景を水色に変更 */
+        .header-bg {
+            background-color: #008cff; /* 濃い青 */
+            background-image: linear-gradient(135deg, #008cff 0%, #66b3ff 100%);
+            color: #ffffff;
+            box-shadow: 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* フッターの背景を白から淡い水色に */
+        .footer-bg {
+            background-color: #f0faff;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start">
+    <!-- ヘッダー -->
+    <header class="w-full header-bg py-6 mb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-center">AIアートコンペ</h1>
+            <!-- 「テーマ」の3文字を「エントリー作品」と同じ文字サイズに、残りの「「水」」を大きくしました -->
+            <p class="text-center mt-2 text-gray-100"><span class="text-base font-medium">テーマ</span><span class="text-xl font-medium">「水」</span><span class="text-base font-medium"> エントリー作品</span></p>
+        </div>
+    </header>
+
+    <!-- メインコンテンツラッパー -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <!-- 作品グリッド -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <script>
+                // 作者名の配列（ご提供いただいたリストに更新しました）
+                const authors = [
+                    "あげ妻", "カナダ", "てるにゃん", "きしゃぽっぽ", "そらっこ", "yumi",
+                    "春男", "サイトウ", "雪んこ", "ゆーすけ", "明子", "Natty",
+                    "たからん", "erika", "きんまさ", "ことか", "グミミ", "atelier Enki",
+                    "石井 恵一", "しゅがー", "たくや", "ジャネット", "はないちご", "ちさこ",
+                    "yoshinori", "ちひろーかる", "keiko", "みっちゃん", "AYA", "いつき",
+                    "ゆっき", "まさこ", "ゆみ", "さきこ", "きこ", "匿名", "まなゆみ", "さとう"
+                ];
+
+                // 作品カードを生成するループを38まで変更
+                for (let i = 1; i <= 38; i++) {
+                    const number = i.toString().padStart(2, '0');
+                    // リンクを 'artpiece/noXX.html' に変更
+                    const link = `artpiece/no${number}.html`;
+                    // OGP画像とアート作品画像のパスを 'image01/ogpXX.jpg' と 'image01/artXX.jpg' に変更
+                    const ogpImage = `image01/ogp${number}.jpg`;
+                    const artImage = `image01/art${number}.jpg`;
+                    const authorName = authors[i - 1];
+                    const description = `作者：${authorName}`;
+                    
+                    document.write(`
+                        <a href="${link}" class="block card bg-white rounded-lg shadow-md hover:shadow-xl overflow-hidden">
+                            <div class="relative w-full h-48 sm:h-56 overflow-hidden">
+                                <img src="${artImage}" alt="AIアート作品 ${i}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/CCCCCC/333333?text=Art+${i}';">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h2 class="text-xl font-bold text-gray-800">エントリーNo.${i}</h2>
+                                <p class="text-sm text-gray-500 mt-1">${description}</p>
+                            </div>
+                        </a>
+                    `);
+                }
+            </script>
+        </div>
+    </main>
+
+    <!-- フッター（著作権表示） -->
+    <footer class="w-full footer-bg shadow-lg py-3 px-4 sm:px-6 lg:px-8 flex justify-center items-center fixed bottom-0 z-10">
+        <p class="text-gray-500 text-sm">&copy; 2025 A_Vision++. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
